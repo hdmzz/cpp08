@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:25:30 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/16 02:53:05 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/16 03:34:16 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ Span::~Span() {
 Span & Span::operator=(Span const & rhv) {
     if (this != &rhv) {
         this->_maxSize = rhv._maxSize;
-        
+        this->_numbers.clear();
+        this->_numbers = rhv._numbers;
     }
 }
 
