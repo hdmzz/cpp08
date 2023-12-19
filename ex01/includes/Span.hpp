@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:48:15 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/16 02:42:20 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:02:18 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ public:
 
     Span & operator=(Span const & rhv);
     void addNumber(int toAdd);
-    int shortestSpan() const ;
-    int longestSpan()const;
+    unsigned int shortestSpan() const;
+    unsigned int longestSpan()const;
 };
 
 #endif

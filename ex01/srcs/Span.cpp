@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:25:30 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/16 03:34:16 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:03:44 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ Span::~Span() {
 Span & Span::operator=(Span const & rhv) {
     if (this != &rhv) {
         this->_maxSize = rhv._maxSize;
-        this->_numbers.clear();
-        this->_numbers = rhv._numbers;
+        this->_numbers.assign(rhv._numbers.begin(), rhv._numbers.end());
     }
+    return (*this);
 }
 
 /********************************************************************
@@ -55,25 +55,30 @@ const char * Span::NotEnoughElementsInSPan::what() const throw () {
  *                          Member function
  * ******************************************************************/
 
-int Span::shortestSpan() const {
-    if (this->_numbers.size() <= 1)
+unsigned int Span::shortestSpan() const {
+    if (this->_numbers.size() < 2)
         throw (Span::NotEnoughElementsInSPan());
-    std::vector<int> sortedSpan = this->_numbers;
-    std::sort(sortedSpan.begin(), sortedSpan.end());
-    return (sortedSpan[1] - sortedSpan[0]);
+    std::vector<int> sorted(_numbers);
+    std::sort(sorted.begin(), sorted.end());
+    int smallestSpan = sorted[1] - sorted[0];
+    for(unsigned int i = 1; i < sorted.size() - 1; i++) {
+       int currentSpan = sorted[i + 1] - sorted[i];
+       if(currentSpan < smallestSpan) {
+           smallestSpan = currentSpan;
+       }
+   }
+   return smallestSpan;
 }
 
-int Span::longestSpan() const {
-    if (this->_numbers.size() <= 1)
+unsigned int Span::longestSpan() const {
+    if (this->_numbers.size() < 2)
         throw (Span::NotEnoughElementsInSPan());
-    std::vector<int> sortedSpan = this->_numbers;
+    std::vector<int> sortedSpan(this->_numbers);
     std::sort(sortedSpan.begin(), sortedSpan.end());
-    return (sortedSpan[sortedSpan.size() - 1] - sortedSpan[sortedSpan.size() - 2]);
+    return (sortedSpan[sortedSpan.size() - 1] - sortedSpan[0]);
 }
 
 void Span::addNumber(int toAdd) {
-    //add a number to the span
-    //if too many numbers in the span fuck off throw exception 
     if (this->_numbers.size() >= this->_maxSize)
         throw (Span::TooManyNumbersInSpan());
     this->_numbers.push_back(toAdd);
