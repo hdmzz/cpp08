@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:58:37 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/20 22:22:08 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/20 23:21:18 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define MUTANTSTACK_HPP
 # include <algorithm>
 # include <stack>
-# include <ostream>
+# include <iostream>
 
 template<typename T, typename C = std::deque<T> >
-class MutantStack : std::stack<T>
+class MutantStack : public std::stack<T, C>
 {
 public:
     MutantStack() {};
@@ -35,12 +35,15 @@ public:
         }
         return (*this);
     };
+
+//quand on appelle iterator de la classe MutantStack cela correspond a un iterator de la classe std::deque
+    typedef typename std::stack<T>::container_type::iterator iterator;
     
-    typename std::stack<T>::iterator begin() {
+    iterator begin() {
         return this->c.begin();
     }
 
-    typename std::stack<T>::iterator end() {
+    iterator end() {
         return this->c.end();
     }
 };

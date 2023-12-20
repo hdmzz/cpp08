@@ -1,7 +1,7 @@
 .PHONY: all re clean fclean
 
 # Program name
-NAME	= easyfind
+NAME	= mutantstack
 
 # Compiler
 CC		= c++
