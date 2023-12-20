@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:25:30 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/19 21:03:44 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:45:36 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
  *                          Canonical Form
  * ******************************************************************/
 
-Span::Span() : _maxSize(0) {
+Span::Span() : _maxSize(0), _numbers() {
     return ;
 }
 
-Span::Span(unsigned int N) : _maxSize(N) {
+Span::Span(unsigned int N) : _maxSize(N), _numbers() {
     return ;
 }
 
@@ -83,4 +83,14 @@ void Span::addNumber(int toAdd) {
         throw (Span::TooManyNumbersInSpan());
     this->_numbers.push_back(toAdd);
     return ;
+}
+
+void Span::fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+    if (this->_numbers.size() + std::distance(begin, end) > this->_maxSize)
+        throw (Span::RangeTooBig());
+    this->_numbers.insert(this->_numbers.end(), begin, end);
+}
+
+const char * Span::RangeTooBig::what() const throw () {
+    return ("The range can't fit in the vector");
 }

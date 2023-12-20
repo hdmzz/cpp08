@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:48:15 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/19 21:02:18 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/19 21:45:23 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <iostream>
 # include <vector>
 # include <algorithm>
+# include <iterator>
+
 class Span
 {
 private:
@@ -36,10 +38,16 @@ public:
             virtual const char * what() const throw();
     };
 
+    class RangeTooBig : public std::exception {
+        public:
+            virtual const char * what() const throw();
+    };
+
     Span & operator=(Span const & rhv);
     void addNumber(int toAdd);
     unsigned int shortestSpan() const;
     unsigned int longestSpan()const;
+    void fillSpan(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 };
 
 #endif
