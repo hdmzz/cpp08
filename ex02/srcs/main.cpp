@@ -6,12 +6,13 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 22:23:20 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/20 23:41:06 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/21 06:02:15 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/MutantStack.hpp"
 #include <list>
+
 int main()
 {
     {
@@ -59,6 +60,6 @@ int main()
             std::cout << *it << std::endl;
             ++it;
         }
-        return 0;
     }
+    return 0;
 }

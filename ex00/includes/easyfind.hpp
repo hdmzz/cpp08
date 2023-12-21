@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:45:07 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/13 21:19:26 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/21 04:36:53 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 # include <iterator>
 # include <algorithm>
 # include <stdexcept>
+# include <iostream>
 
 template <typename T>
-typename T::const_iterator easyfind(T const & tab, const int toFind) {
-    typename T::const_iterator it;
+void easyfind(T const & tab, int toFind) {
 
-    it = std::find(tab.begin(), tab.end(), toFind);
+    typename T::const_iterator it = std::find(tab.begin(), tab.end(), toFind);
     if (it == tab.end()) {
         throw (std::out_of_range("The element is not present in the container"));
     }
-    return (it);
+    else {
+        std::cout << "Element " << *it << " found" << std::endl;
+    }
 }
 
 #endif
