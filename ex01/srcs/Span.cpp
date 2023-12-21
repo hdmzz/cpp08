@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:25:30 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/19 21:45:36 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/21 02:28:54 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,13 @@ const char * Span::NotEnoughElementsInSPan::what() const throw () {
 unsigned int Span::shortestSpan() const {
     if (this->_numbers.size() < 2)
         throw (Span::NotEnoughElementsInSPan());
+
     std::vector<int> sorted(_numbers);
     std::sort(sorted.begin(), sorted.end());
-    int smallestSpan = sorted[1] - sorted[0];
-    for(unsigned int i = 1; i < sorted.size() - 1; i++) {
-       int currentSpan = sorted[i + 1] - sorted[i];
-       if(currentSpan < smallestSpan) {
-           smallestSpan = currentSpan;
-       }
-   }
-   return smallestSpan;
+    std::vector<int> difference(sorted.size());
+    std::adjacent_difference(sorted.begin(), sorted.end(), difference.begin());
+
+    return (*std::min_element(difference.begin(), difference.end()));
 }
 
 unsigned int Span::longestSpan() const {

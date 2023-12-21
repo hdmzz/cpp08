@@ -6,7 +6,7 @@
 /*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:48:15 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/19 21:45:23 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/21 02:19:36 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SPAN_HPP
 # include <iostream>
 # include <vector>
+# include <numeric>
 # include <algorithm>
 # include <iterator>
 
