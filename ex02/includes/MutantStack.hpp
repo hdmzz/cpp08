@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdamitzi <hdamitzi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: hdamitzi <hdamitzi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 22:58:37 by hdamitzi          #+#    #+#             */
-/*   Updated: 2023/12/20 23:21:18 by hdamitzi         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:55:04 by hdamitzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ public:
         return (*this);
     };
 
-//quand on appelle iterator de la classe MutantStack cela correspond a un iterator de la classe std::deque
+//when you call iterqtor of the MutantStack class it corresponds to an iterator of the std::deque class (double ended queue?)
     typedef typename std::stack<T>::container_type::iterator iterator;
     
     iterator begin() {
